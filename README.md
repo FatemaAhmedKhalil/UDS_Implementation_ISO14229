@@ -17,7 +17,5 @@ Are you ready for some groundbreaking news? We've embarked on an incredible jour
 - Transfer Data (0x36)
 - Request Transfer Exit (0x37)
 
-🔄 Pointer-to-Function Magic: Leveraging the power of pointer-to-function techniques, we've seamlessly integrated functionality into our system, enhancing flexibility and adaptability.
-
 🐍 Python Scripting for Efficiency: To further optimize efficiency and promote interoperability, we've developed Python scripts for streamlined command transmission and reception. These scripts have significantly elevated the efficiency of our system.
 
