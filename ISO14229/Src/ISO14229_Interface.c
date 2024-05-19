@@ -105,7 +105,7 @@ ISO14229_Service_t WriteDataByIdentifierServices = {
 
 ISO14229_Service_t RequestDownloadServices = {
     .SID = 0x34,
-    .SecurityLevel = 0,
+    .SecurityLevel = 1,
     .ServiceHandler = RequestDownload_Handler,
     .ifSubFunction = RequestDownload_SubFunction,
     .SubFunctions = {NULL}
@@ -113,7 +113,7 @@ ISO14229_Service_t RequestDownloadServices = {
 
 ISO14229_Service_t TransferDataServices = {
     .SID = 0x36,
-    .SecurityLevel = 0,
+    .SecurityLevel = 1,
     .ServiceHandler = TransferData_Handler,
     .ifSubFunction = TransferData_SubFunction,
     .SubFunctions = {NULL}
@@ -121,7 +121,7 @@ ISO14229_Service_t TransferDataServices = {
 
 ISO14229_Service_t RequestTransferExitServices = {
     .SID = 0x37,
-    .SecurityLevel = 0,
+    .SecurityLevel = 1,
     .ServiceHandler = RequestTransferExit_Handler,
     .ifSubFunction = RequestTransfer_SubFunction,
     .SubFunctions = {NULL}

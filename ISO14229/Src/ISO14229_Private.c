@@ -27,7 +27,7 @@ ISO14229_DID_t DID_F186 = { // ISO14229 standard for detecting current session
 
 ISO14229_DID_t DID_FA12 = { // example for display Serial number
                             .ID = 0xFA12,
-                            .ReadSecurityLevel = 0,
+                            .ReadSecurityLevel = 1,
                             .WriteSecurityLevel = 0,
                             .Address = (u32)&Programmer[0],
                             .ReadLength = 20,
