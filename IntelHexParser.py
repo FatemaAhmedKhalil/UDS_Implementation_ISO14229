@@ -42,13 +42,14 @@ def hex_to_int(hex_str):
 def int_to_hex(n):
     return '{:08X}'.format(n)
 
-def Parsing():
+def Parsing(FileName):
     ErrorState = NO_ERROR
     FlashStartAddress = 0
     
+    DataBlock = []
     ParsedData = []
 
-    with open("GreenLED.hex", 'r') as file:
+    with open(FileName, 'r') as file:
         lines = file.readlines()
 
     for Index in range(len(lines)):
@@ -81,20 +82,26 @@ def Parsing():
         # Switch for Record Type 
         if RecordType == RECORD_TYPE_DATA:
             # the only type we intrested only in data to be flashed
-            oneLineParsedData = []
             Address = FlashStartAddress + AddressOffset
             Address = format(Address, '0' + str(FLASH_START_SIZE + ADDRESS_OFFSET_SIZE) + 'X')
-            oneLineParsedData.append(Address)
-            while ByteCount != 0: 
+            
+            if (len(DataBlock)== 0):
+                DataBlock.append(Address)
+                DataBlock.append(0)
+            DataBlock[1] += ByteCount
+
+            DataCount = ByteCount
+            while DataCount != 0: 
                 Data = int(OneLine[StartRecordIndex:StartRecordIndex + DATA_SIZE], HEX_CONVERTER) # Extract one Line data and convert it to integer
                 CheckSum += Data # Update checkSum                
                 HexData = format(Data, '0' + str(DATA_SIZE) + 'X') # Convert data to hexadecimal string and pad it
-                oneLineParsedData.append(HexData)
-
+                DataBlock.append(HexData)
                 StartRecordIndex += DATA_SIZE # Update Start Record Address
-                ByteCount -= 1 # Decrement byte count
-            ParsedData.append(oneLineParsedData)
-
+                DataCount -= 1 # Decrement byte count
+            if ( (ByteCount != 16)):
+                DataBlock[1] = format(DataBlock[1], '0' + str(8) + 'X')
+                ParsedData.append(DataBlock)
+                DataBlock = []
         
         elif RecordType == RECORD_TYPE_END_OF_FILE:
             if OneLine.strip() != ":00000001FF":
@@ -161,7 +168,5 @@ def Parsing():
             ErrorState = CHECK_SUM_ERROR
             return ErrorState
         StartRecordIndex += CHECK_SUM_SIZE # Update Start Record Address
-
+    
     return ErrorState, ParsedData
-
-Parsing()
