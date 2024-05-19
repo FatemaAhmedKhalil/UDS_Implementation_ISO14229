@@ -149,7 +149,6 @@ def FileTransfer(FileName):
             Write_Data_To_Serial_Port(dataFormatIdentifier, 1)
             Write_Data_To_Serial_Port(addressAndLengthFormatIdentifier, 1)
             MemoryAddress = int(Data[0],16)
-            print(MemoryAddress>>24)
             Write_Data_To_Serial_Port((MemoryAddress>>24), 1)
             MemoryAddress = MemoryAddress << 8
             MemoryAddress = MemoryAddress & 0xFFFFFFFF
@@ -227,7 +226,7 @@ while True:
     print(" List of Supported Services  --> 1")
     print(" Transfer File Services      --> 2")
 
-    inputData = int(input("Choose your Option: \n"))
+    inputData = int(input("Choose your Option: "))
     if inputData == 1:
         print("   DiagnosticSessionControlServices  --> 0x10")
         print("   ECUResetServices                  --> 0x11")
