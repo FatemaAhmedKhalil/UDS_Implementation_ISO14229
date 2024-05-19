@@ -57,9 +57,9 @@ voltageTooHigh					    	 =  0x92
 voltageTooLow					    	 =  0x93
 
 ''' Lengths'''
-RequestDownloadRequestLength          =   0x0B
-TransferDataRequestLength             =   0x06
-TransferExitLength                    =   0x01
+RequestDownloadLength          =   0x0B
+TransferDataLength             =   0x06
+TransferExitLength             =   0x01
 
 def Check_Serial_Ports():
     Serial_Ports = []
@@ -149,7 +149,7 @@ def FileTransfer(FileName):
     if State == 0:
         for Index, Data in enumerate(ParsedData):
             print("\nRequest Download Processing... ")
-            Write_Data_To_Serial_Port(RequestDownloadRequestLength, 1) # Send Length
+            Write_Data_To_Serial_Port(RequestDownloadLength, 1) # Send Length
             Write_Data_To_Serial_Port(RequestDownloadServices, 1)
             Write_Data_To_Serial_Port(dataFormatIdentifier, 1)
             Write_Data_To_Serial_Port(addressAndLengthFormatIdentifier, 1)
@@ -187,7 +187,7 @@ def FileTransfer(FileName):
                 print("\nTransfer Data Processing... ")
                 TransferDataCounter = 1
                 for Blocks in range(2,len(Data),MaxNumOfBlockLength):
-                    Write_Data_To_Serial_Port(TransferDataRequestLength, 1) # Send Length
+                    Write_Data_To_Serial_Port(TransferDataLength, 1) # Send Length
                     Write_Data_To_Serial_Port(TransferDataServices, 1)
                     Write_Data_To_Serial_Port(TransferDataCounter, 1)
                     # Iterate over each element in the Data array and write it to the serial port
