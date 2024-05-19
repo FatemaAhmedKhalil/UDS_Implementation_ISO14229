@@ -16,7 +16,7 @@
 
 /************* Request Transfer Response *************/
 #define lengthFormatIdentifier      0x10
-#define MaxNumOfBlockLength         16
+#define MaxNumOfBlockLength         4
 
 /************* USART Number *************/
 #define ISO14229_USARTxNum		USART1

@@ -12,6 +12,13 @@
 
 #include "ISO14229_Interface.h"
 
+#define defaultSessionP2                    0x0032
+#define defaultSessionP2s                   0x01F4
+#define ProgrammingSessionP2                0x0019
+#define ProgrammingSessionP2s               0x01F4
+#define dataFormatIdentifier                0x00
+#define addressAndLengthFormatIdentifier    0x44
+
 /******* Sessions Level *******/
 #define Level1              1
 
@@ -41,13 +48,6 @@
 #define TransferExitMinLength                       1
 #define NRCLength                                   3
 #define SuspressedBit                               7
-
-#define defaultSessionP2                    0x0032
-#define defaultSessionP2s                   0x01F4
-#define ProgrammingSessionP2                0x0019
-#define ProgrammingSessionP2s               0x01F4
-#define dataFormatIdentifier                0x00
-#define addressAndLengthFormatIdentifier    0x44
 
 extern ISO14229_SubFunction_t defaultSession;
 extern ISO14229_SubFunction_t ProgrammingSession;
